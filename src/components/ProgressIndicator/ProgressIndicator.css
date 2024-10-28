@@ -1,0 +1,71 @@
+.progress-line {
+    width: 2rem;
+    height: 2rem;
+    border-width: 2px;
+    border-color: #5D7FA3;
+    border-style: solid;
+    border-radius: 100%;
+    position: relative;
+}
+
+.progress-line::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 13px;
+    top: 105%;
+    width: 0.125rem;
+    height: 3rem;
+    background-color: #5D7FA3;
+}
+.active {
+    color: white;
+}
+.progress-line.active {
+    border-color: #32ABF2;
+}
+li:last-of-type .progress-line::after {
+    content: none;
+}
+
+.successful{
+    background-color: #32ABF2;
+    border-color: #32ABF2;
+}
+.successful::after{
+    height: 2.75rem;
+    top: 125%;
+}
+.active.successful::after {
+    background-color: #5D7FA3;
+    height: 2.75rem;
+    top: 125%;
+}
+
+.successful::before {
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    content: '';
+    display: block;
+    border-radius: 100%;
+    border: 2px solid #32ABF2;
+}
+.successful.done{
+    border-color: #32ABF2;
+}
+.successful.done::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 13px;
+    top: 105%;
+    width: 0.125rem;
+    height: 3rem;
+    background-color: #32ABF2;
+}
+.successful.done::before {
+    content: none;
+}
