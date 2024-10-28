@@ -26,7 +26,7 @@ This document serves as an overview of the project, its key components, and inst
 Clone the repository and install dependencies:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Undertaker2020/merchant-dashboard.git
 cd project-directory
 npm install
 ```
