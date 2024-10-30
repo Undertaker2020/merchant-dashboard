@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { FormSection } from "@ui/FormSection.tsx";
 import { DATA_FORM } from "@data/index.ts";
 import { useDispatch } from 'react-redux';
-import { markDone, markSuccessful } from '@/store/progressSlice';
+import {markActive, markDone, markSuccessful} from '@/store/progressSlice';
 import { nextStep } from "@/store/stepSlice.ts";
 
 type FormFields = {
@@ -19,7 +19,7 @@ export default function Form() {
     });
     const [errors, setErrors] = useState<Partial<FormFields>>({});
     const dispatch = useDispatch();
-
+    dispatch(markActive("Welcome"))
     const validate = useCallback((): boolean => {
         const newErrors: Partial<FormFields> = {};
         if (!formValues.email || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formValues.email)) {
@@ -59,6 +59,7 @@ export default function Form() {
             dispatch(markDone("Welcome"));
             dispatch(nextStep());
             console.log(JSON.stringify(formValues, null, 2));
+            dispatch(markActive("Connect your Shopify store"))
         } else {
             console.log("Validation failed.");
         }

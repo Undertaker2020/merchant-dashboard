@@ -6,14 +6,17 @@ import Status from "@ui/Status.tsx";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store.ts";
 import Select from "@ui/Select.tsx";
+import SpinnerLoading from "@ui/SpinnerLoading.tsx";
 
 export default function SecondStep() {
     // Отримання активного компонента з Redux
     const activeComponent = useSelector((state: RootState) => state.step.activeComponent);
+    // const dispatch = useDispatch();
+
 
     return (
-        <Card classWrapper={`p-[64px_40px] ${activeComponent !== 'DefaultComponent' ? "p-[126px_85px]" : ""} 
-        ${activeComponent === 'Intermediate3' ? "p-[43px_40px]" : ""} ${activeComponent === 'Intermediate4' ? "p-[126px_85px]" : ""}`}>
+        <Card classWrapper={`${activeComponent !== 'DefaultComponent' ? " p-[126px_85px]" : "p-[64px_40px]"} 
+        ${activeComponent === 'Intermediate3' ? "p-[43px_40px]" : ""} ${activeComponent === 'Intermediate4' ? "p-[126px_85px]" : ""} `}>
             {activeComponent === 'DefaultComponent' ? (
                 <>
                     <CardHeader {...CARD_CONTENT[1]} />
@@ -31,13 +34,18 @@ export default function SecondStep() {
                             buttonText="Continue" linkText="Wrong store? Connect another one"/>
                 </>
             ) : activeComponent === 'Intermediate3' ? (
-                <Select/>
+                <Select link="Connect" buttonText="Submit"
+                        descriptionText="Chad Beta is currently only available on Shopify. We’ll send you an email when Chad becomes available on your platform."
+                        linkText="Actually use Shopify?" titleText="Don’t use Shopify?"/>
             ) : activeComponent === 'Intermediate4' ?
                 <Status title="Response received"
                         text="Thank you for your interest in Chad! We’ll be hard at work building integrations to support your platform."
                         buttonText="Done"
                 />
-                : <></>}
+                : activeComponent === 'Spinner' ?
+                    <SpinnerLoading/>
+                    : <></>
+            }
         </Card>
     );
 }

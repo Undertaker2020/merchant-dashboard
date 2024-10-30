@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     step: 0,
     activeComponent: 'DefaultComponent',
-    intermediateComponents: ['Intermediate1', 'Intermediate2', 'Intermediate3'] // Масив проміжних компонентів
+    intermediateComponents: ['Intermediate1', 'Intermediate2', 'Intermediate3', "Intermediate4", "Spinner"] // Масив проміжних компонентів
 };
 
 const stepSlice = createSlice({
@@ -20,12 +20,8 @@ const stepSlice = createSlice({
             state.step = action.payload;
         },
         setActiveComponent: (state, action) => {
-            const { component, isIntermediate } = action.payload;
-            if (isIntermediate) {
-                state.activeComponent = state.intermediateComponents[component] || 'DefaultComponent';
-            } else {
-                state.activeComponent = component;
-            }
+            state.activeComponent = action.payload;
+
         }
     }
 });

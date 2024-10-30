@@ -28,8 +28,15 @@ const progressSlice = createSlice({
                 item.done = true;
             }
         },
+        markActive: (state, action) => {
+            const title = action.payload;
+            const item = state.find(item => item.title === title);
+            if (item) {
+                item.active = true;
+            }
+        }
     },
 });
 
-export const { markSuccessful, markDone } = progressSlice.actions;
+export const { markSuccessful, markDone, markActive } = progressSlice.actions;
 export default progressSlice.reducer;

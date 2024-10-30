@@ -71,7 +71,7 @@ interface ListItemProps {
 
 interface ButtonProps {
     text: string;
-    link: string;
+    linkText: string;
 }
 
 export interface DataListItem {
@@ -97,7 +97,7 @@ export const DATA_LIST_ITEMS: DataListItem[] = [
         button: [
             {
                 text: "Connect store",
-                link: "I don’t use Shopify"
+                linkText: "I don’t use Shopify"
             }
         ]
     },
@@ -119,7 +119,7 @@ export const DATA_LIST_ITEMS: DataListItem[] = [
         button: [
             {
                 text: "Connect Gmail account",
-                link: "I don’t use Gmail",
+                linkText: "I don’t use Gmail",
             }
         ]
     }
