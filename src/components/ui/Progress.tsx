@@ -8,11 +8,10 @@ import { RootState } from "@/store/store.ts";
 
 
 export const Progress = () => {
-
     const dispatch = useDispatch();
     const step = useSelector((state: RootState) => state.step.step);
-    // Отримуємо масив `progress` з Redux Store
     const progress = useSelector((state: RootState) => state.progress);
+
     useEffect(() => {
         dispatch(setStep(step));
     }, [step, dispatch]);
@@ -25,7 +24,7 @@ export const Progress = () => {
                     ))
                 }
             </ul>
-            {step >= 1 ? <NextPrevButton/> : null}
+            {step >= 1 || progress[step+1].active ? <NextPrevButton/> : null}
         </div>
     );
 }

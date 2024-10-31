@@ -11,7 +11,6 @@ import SpinnerLoading from "@ui/SpinnerLoading.tsx";
 export default function SecondStep() {
     // Отримання активного компонента з Redux
     const activeComponent = useSelector((state: RootState) => state.step.activeComponent);
-    // const dispatch = useDispatch();
 
 
     return (

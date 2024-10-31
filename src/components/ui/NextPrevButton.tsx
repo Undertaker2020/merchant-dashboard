@@ -1,8 +1,12 @@
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { nextStep, prevStep } from "@/store/stepSlice";
+import {RootState} from "@/store/store.ts";
 
 export default function NextPrevButton() {
     const dispatch = useDispatch();
+    const step = useSelector((state: RootState) => state.step.step);
+    const progress = useSelector((state: RootState) => state.progress);
+
     return (
         <div className="absolute -bottom-[81px] w-full h-[33px] flex justify-between items-center text-[#93A8C1]">
             <button
@@ -16,7 +20,7 @@ export default function NextPrevButton() {
             </button>
             <button
                 className="w-[83px] bg-[#134267] h-full rounded flex justify-center items-center gap-2"
-                onClick={() => dispatch(nextStep())}
+                onClick={() => progress[step+1].active ? dispatch(nextStep()) : null }
             >
                 Next
                 <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
